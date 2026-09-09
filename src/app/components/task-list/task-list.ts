@@ -41,6 +41,9 @@ export class TaskList {
   deleteTask(task: any) {
     this.selectedTask = task;
     this.showDeletePopup = true;
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   }
 
   confirmDelete() {
@@ -54,10 +57,17 @@ export class TaskList {
 
     this.selectedTask = null;
     this.showDeletePopup = false;
+
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
   }
 
   cancelDelete() {
     this.selectedTask = null;
     this.showDeletePopup = false;
+
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
   }
+
 }
