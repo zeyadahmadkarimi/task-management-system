@@ -1,0 +1,115 @@
+<div class="view-task-page">
+
+  <div class="view-task-card">
+
+    <div class="page-header">
+
+      <div class="header-content">
+
+        <span class="page-tag">
+          TASK DETAILS
+        </span>
+
+        <h1>
+          {{ task?.taskName }}
+        </h1>
+
+        <p>
+          View complete information and details about this task.
+        </p>
+
+      </div>
+
+      <div class="task-status">
+        {{ task?.status }}
+      </div>
+
+    </div>
+
+
+    <div class="task-information">
+
+      <div class="information-section">
+
+        <div class="section-heading">
+          Description
+        </div>
+
+        <div
+          #descriptionBox
+          class="description-box"
+          [class.has-more-content]="showDescriptionScroll"
+          (scroll)="onDescriptionScroll()"
+        >
+          {{ task?.description }}
+        </div>
+
+      </div>
+
+
+      <div class="information-section">
+
+        <div class="section-heading">
+          Task Information
+        </div>
+
+        <div class="metadata-grid">
+
+          <div class="metadata-item">
+
+            <span class="metadata-label">
+              Due Date
+            </span>
+
+            <span class="metadata-value">
+              {{ task?.dueDate }}
+            </span>
+
+          </div>
+
+
+          <div class="metadata-item">
+
+            <span class="metadata-label">
+              Task ID
+            </span>
+
+            <span class="metadata-value">
+              #{{ taskId }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="task-actions">
+
+      <button
+        type="button"
+        class="back-btn"
+        (click)="goBack()"
+      >
+        <span>←</span>
+        Back to Tasks
+      </button>
+
+
+      <button
+        type="button"
+        class="edit-btn"
+        (click)="editTask()"
+      >
+        Edit Task
+        <span>→</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

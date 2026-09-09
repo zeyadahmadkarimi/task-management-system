@@ -1,0 +1,129 @@
+<div class="task-list-page">
+
+  <div class="task-list-header">
+
+    <div>
+      <h1>Task Management System</h1>
+
+      <p>
+        Manage, track and organize your tasks efficiently.
+      </p>
+    </div>
+
+    <button
+      class="add-task-btn"
+      (click)="addTask()"
+    >
+      + Add Task
+    </button>
+
+  </div>
+
+  <div class="task-container">
+
+    <div
+      class="task-card"
+      *ngFor="let task of tasks"
+    >
+
+      <div class="task-content">
+
+        <h2>{{ task.taskName }}</h2>
+
+        <p class="description">
+          {{ task.description }}
+        </p>
+
+        <div class="task-info">
+
+          <span class="status-info">
+            <strong>Status:</strong>
+            {{ task.status }}
+          </span>
+
+          <span class="due-date-info">
+            <strong>Due Date:</strong>
+            {{ task.dueDate }}
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="task-actions">
+
+        <button
+          type="button"
+          class="view-btn"
+          (click)="viewTask(task)"
+        >
+          View
+        </button>
+
+        <button
+          type="button"
+          class="edit-btn"
+          (click)="editTask(task)"
+        >
+          Edit
+        </button>
+
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="deleteTask(task)"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+@if (showDeletePopup) {
+
+  <div class="delete-popup-overlay">
+
+    <div class="delete-popup">
+
+      <div class="delete-popup-icon">
+        !
+      </div>
+
+      <h2>Delete Task?</h2>
+
+      <p>
+        Are you sure you want to delete
+        <strong>{{ selectedTask?.taskName }}</strong>?
+      </p>
+
+      <div class="delete-popup-actions">
+
+        <button
+          type="button"
+          class="delete-cancel-btn"
+          (click)="cancelDelete()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          class="delete-confirm-btn"
+          (click)="confirmDelete()"
+        >
+          Delete Task
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

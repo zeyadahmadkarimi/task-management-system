@@ -1,0 +1,270 @@
+<div class="add-task-page">
+
+  <div class="background-shape background-shape-one"></div>
+  <div class="background-shape background-shape-two"></div>
+  <div class="background-shape background-shape-three"></div>
+
+  <div class="add-task-card">
+
+    <div class="page-header">
+
+      <div class="heading-icon-box">
+
+        <svg
+          class="heading-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 5V19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M5 12H19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+
+      </div>
+
+      <div class="heading-content">
+
+        <h1>
+          Add Task
+        </h1>
+
+        <p>
+          Enter the details below to create a new task.
+        </p>
+
+      </div>
+
+    </div>
+
+    <form
+      [formGroup]="taskForm"
+      (ngSubmit)="addTask()"
+    >
+
+      <div class="form-group">
+
+        <label for="taskName">
+          Task Name <span class="required-star">*</span>
+        </label>
+
+        <input
+          id="taskName"
+          type="text"
+          formControlName="taskName"
+          placeholder="Enter task name"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="description">
+          Description <span class="required-star">*</span>
+        </label>
+
+        <textarea
+          id="description"
+          rows="4"
+          formControlName="description"
+          placeholder="Enter task description"
+        ></textarea>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="status">
+            Status <span class="required-star">*</span>
+          </label>
+
+          <div class="select-wrapper">
+
+            <select
+              id="status"
+              formControlName="status"
+            >
+
+              <option value="Pending">
+                Pending
+              </option>
+
+              <option value="In Progress">
+                In Progress
+              </option>
+
+              <option value="Completed">
+                Completed
+              </option>
+
+            </select>
+
+            <svg
+              class="select-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="dueDate">
+            Due Date <span class="required-star">*</span>
+          </label>
+
+          <div class="date-wrapper">
+
+            <input
+              id="dueDate"
+              type="date"
+              formControlName="dueDate"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="back-btn"
+          routerLink="/"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="add-btn"
+        >
+          Add Task
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+@if (showRequiredPopup) {
+
+  <div class="popup-overlay">
+
+    <div class="popup-box">
+
+      <div class="popup-icon">
+        !
+      </div>
+
+      <h2>
+        Required Field
+      </h2>
+
+      <p>
+        {{ requiredMessage }}
+      </p>
+
+      <button
+        type="button"
+        class="popup-btn"
+        (click)="closeRequiredPopup()"
+      >
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
+}
+
+
+@if (showSuccessPopup) {
+
+  <div class="popup-overlay">
+
+    <div class="popup-box success-popup">
+
+      <div class="success-animation">
+
+        <div class="success-circle-outer">
+
+          <div class="success-circle-middle">
+
+            <div class="success-circle-inner">
+
+              <svg
+                class="success-check"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12.5L9.5 17L19 7.5"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <span class="success-dot dot-one"></span>
+        <span class="success-dot dot-two"></span>
+        <span class="success-dot dot-three"></span>
+        <span class="success-dot dot-four"></span>
+
+      </div>
+
+      <h2>
+        Task Added Successfully
+      </h2>
+
+      <button
+        type="button"
+        class="popup-btn"
+        (click)="closeSuccessPopup()"
+      >
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
+}

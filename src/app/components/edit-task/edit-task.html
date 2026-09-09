@@ -1,0 +1,259 @@
+<div class="edit-task-page">
+
+  <div class="edit-task-card">
+
+    <div class="page-header">
+
+      <div class="heading-icon-box">
+
+        <svg
+          class="heading-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 20H21"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M16.5 3.5C17.3284 2.67157 18.6716 2.67157 19.5 3.5C20.3284 4.32843 20.3284 5.67157 19.5 6.5L7 19L3 20L4 16L16.5 3.5Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+      </div>
+
+      <div class="heading-content">
+
+        <h1>
+          Edit Task
+        </h1>
+
+        <p>
+          Update the task details below.
+        </p>
+
+      </div>
+
+    </div>
+
+    <form
+      [formGroup]="taskForm"
+      (ngSubmit)="updateTask()"
+    >
+
+      <div class="form-group">
+
+        <label for="taskName">
+          Task Name
+        </label>
+
+        <input
+          id="taskName"
+          type="text"
+          formControlName="taskName"
+          placeholder="Enter task name"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="description">
+          Description
+        </label>
+
+        <textarea
+          id="description"
+          rows="4"
+          formControlName="description"
+          placeholder="Enter task description"
+        ></textarea>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="status">
+            Status
+          </label>
+
+          <select
+            id="status"
+            formControlName="status"
+          >
+
+            <option value="Pending">
+              Pending
+            </option>
+
+            <option value="In Progress">
+              In Progress
+            </option>
+
+            <option value="Completed">
+              Completed
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="dueDate">
+            Due Date
+          </label>
+
+          <div
+            class="date-input-wrapper"
+            (click)="openDatePicker(dueDateInput)"
+          >
+
+            <input
+              #dueDateInput
+              id="dueDate"
+              type="date"
+              formControlName="dueDate"
+              min="2000-01-01"
+              max="2099-12-31"
+              (keydown)="preventDateTyping($event)"
+              (paste)="$event.preventDefault()"
+            >
+
+            <svg
+              class="calendar-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="17"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M16 2V6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+
+              <path
+                d="M8 2V6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+
+              <path
+                d="M3 10H21"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="back-btn"
+          (click)="cancel()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="update-btn"
+        >
+          Update Task
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+@if (showRequiredPopup) {
+
+  <div class="popup-overlay">
+
+    <div class="popup-box">
+
+      <div class="popup-icon">
+        !
+      </div>
+
+      <h2>Required Field</h2>
+
+      <p>
+        {{ requiredMessage }}
+      </p>
+
+      <button
+        type="button"
+        class="popup-ok-btn"
+        (click)="closeRequiredPopup()"
+      >
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
+}
+
+@if (showSuccessPopup) {
+
+  <div class="popup-overlay">
+
+    <div class="popup-box success-popup">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>Task Updated</h2>
+
+      <p>
+        Task updated successfully.
+      </p>
+
+      <button
+        type="button"
+        class="popup-ok-btn"
+        (click)="closeSuccessPopup()"
+      >
+        OK
+      </button>
+
+    </div>
+
+  </div>
+
+}
