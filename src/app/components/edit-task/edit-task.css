@@ -103,7 +103,7 @@
 }
 
 .form-group textarea {
-  min-height: 110px;
+  min-height: 140px;
   resize: vertical;
   line-height: 1.6;
 }
@@ -326,6 +326,10 @@
     gap: 0;
   }
 
+  .form-group textarea {
+    min-height: 140px;
+  }
+
   .form-actions {
     flex-direction: row;
     gap: 10px;
@@ -342,4 +346,62 @@
     max-width: 360px;
     padding: 28px 22px;
   }
+
+}
+
+@media (max-width: 400px) {
+
+  .edit-task-page {
+    padding: 10px 8px;
+  }
+
+  .edit-task-card {
+    padding: 22px 15px;
+    border-radius: 12px;
+  }
+
+  .page-header {
+    gap: 10px;
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+  }
+
+  .heading-icon-box {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+    border-radius: 10px;
+  }
+
+  .heading-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .page-header p {
+    font-size: 11px;
+  }
+
+  .form-group textarea {
+    min-height: 140px;
+  }
+
+  .form-actions {
+    gap: 7px;
+  }
+
+  .form-actions button {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+
+  .popup-box {
+    max-width: 340px;
+    padding: 26px 20px;
+  }
+
 }

@@ -11,3 +11,15 @@ body {
 * {
   scrollbar-width: none;
 }
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+button:focus,
+button:focus-visible,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
